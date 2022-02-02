@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import Todo from "./components/Todo";
+import TodoList from "./components/TodoList";
+import todoApp from "./store/todos/todo";
 
-function App() {
+const store = createStore(todoApp)
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.StrictMode>
+      <Provider store={store}>
+        <Todo />
+        <TodoList />
+      </Provider>
+    </React.StrictMode>
   );
-}
+};
 
 export default App;
